@@ -1,0 +1,22 @@
+# Core dependencies
+langchain
+langchain_community
+langchain_google_genai
+sqlalchemy
+sqlalchemy-redshift
+python-dotenv
+psycopg2-binary
+
+# Streamlit interface
+streamlit
+
+# Data handling
+pydantic
+pydantic-settings
+
+# Logging and monitoring
+structlog
+psutil
+
+# Utilities
+tenacity
