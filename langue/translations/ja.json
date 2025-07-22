@@ -60,5 +60,6 @@
     "system_test_success": "✅ 接続OK！",
   "secure_connection": "🔒 セキュア接続アクティブ",
   "config_details_available": "⚙️ 詳細設定は設定タブで利用可能",
-  "status_active": "✅ OK"
+  "status_active": "✅ OK",
+  "success_cache": "✅ キャッシュから取得されました"
 }

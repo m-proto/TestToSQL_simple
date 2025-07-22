@@ -60,5 +60,6 @@
     "system_test_success": "✅ Connections OK!",
   "secure_connection": "🔒 Secure connection active",
   "config_details_available": "⚙️ Detailed configuration available in Settings tab",
-  "status_active": "✅ OK"
+  "status_active": "✅ OK",
+  "success_cache": "✅ Result retrieved from cache"
 }

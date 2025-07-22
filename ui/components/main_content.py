@@ -103,7 +103,7 @@ def generate_sql_query(question):
                     'timestamp': str(st.session_state.get('current_time', 'now'))
                 })
 
-                st.success("✅ Résultat récupéré depuis le cache")
+                st.success(get_text("success_cache"))
                 return
 
             # Sinon → génération via LLM
@@ -177,23 +177,20 @@ def render_sql_result(sql):
 def render_query_history():
     """Affiche l'historique des requêtes"""
     st.markdown(f"### {get_text('query_history')}")
-    
+
     if 'query_history' not in st.session_state or not st.session_state.query_history:
         st.info(get_text("no_history"))
         return
-    
-    # Affichage de l'historique
+
+    # Affichage de l'historique (sans bouton de réutilisation)
     for i, entry in enumerate(st.session_state.query_history):
         with st.expander(f"{get_text('query_number')} {i+1}: {entry['question'][:50]}..."):
             st.markdown(get_text("question_label_history"))
             st.write(entry['question'])
             st.markdown(get_text("sql_label_history"))
             st.code(entry['sql'], language="sql")
-            
-            if st.button(get_text("reuse_query"), key=f"reuse_{i}"):
-                st.session_state.question_input = entry['question']
-                st.session_state.generated_sql = entry['sql']
-                st.rerun()
+
+
 
 def render_advanced_settings():
     """Paramètres avancés"""
