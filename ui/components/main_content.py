@@ -80,38 +80,48 @@ def render_sql_generator():
         render_sql_result(st.session_state.generated_sql)
 
 def generate_sql_query(question):
-    """Génère la requête SQL"""
+    """Génère la requête SQL sans exécution via LangChain SQL Chain"""
     try:
         with st.spinner(get_text("generating")):
-            # Import seulement quand nécessaire
-            from domain.sql.service import generate_sql_query_only
-            from infrastructure.llm import init_llm
             from infrastructure.database import connect_to_redshift
-            
-            # Utilisation de votre code existant
-            llm = init_llm()
-            db = connect_to_redshift()
-            sql = generate_sql_query_only(question, llm, db)
-            
-            if sql:
-                st.session_state.generated_sql = sql
-                
-                # Ajouter à l'historique
+            from infrastructure.llm import get_sql_db, get_gemini_llm, create_sql_query_chain_only
+
+            # Connexion à Redshift
+            engine = connect_to_redshift()
+            db = get_sql_db(engine)
+
+            # LLM Gemini Flash
+            llm = get_gemini_llm()
+
+            # Génération du SQL
+            sql_chain = create_sql_query_chain_only(llm, db)
+            result = sql_chain.invoke({"question": question})
+
+            # Nettoyage
+            cleaned_sql = result.replace("```sql", "").replace("```", "").strip()
+
+            if cleaned_sql:
+                st.session_state.generated_sql = cleaned_sql
+
+                # Historique
                 if 'query_history' not in st.session_state:
                     st.session_state.query_history = []
-                
+
                 st.session_state.query_history.insert(0, {
                     'question': question,
-                    'sql': sql,
+                    'sql': cleaned_sql,
                     'timestamp': str(st.session_state.get('current_time', 'now'))
                 })
-                
+
                 st.success(get_text("success_generated"))
             else:
                 st.error(get_text("error_generation"))
-                
+
     except Exception as e:
         st.error(f"{get_text('error_generation')}: {str(e)}")
+
+
+
 
 def render_sql_result(sql):
     """Affiche le résultat SQL généré"""
