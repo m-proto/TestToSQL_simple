@@ -79,31 +79,51 @@ def render_sql_generator():
     if 'generated_sql' in st.session_state and st.session_state.generated_sql:
         render_sql_result(st.session_state.generated_sql)
 
+from infrastructure.cache import cache_manager  # ✅ à ajouter tout en haut
+
+from infrastructure.cache import cache_manager  # en haut du fichier
+
 def generate_sql_query(question):
-    """Génère la requête SQL sans exécution via LangChain SQL Chain"""
+    """Génère la requête SQL sans exécution via LangChain SQL Chain + cache"""
     try:
         with st.spinner(get_text("generating")):
+            # Vérifie s’il y a déjà une entrée dans le cache
+            cached_sql = cache_manager.get_cached_sql_result(question)
+
+            if cached_sql:
+                st.session_state.generated_sql = cached_sql
+
+                # ✅ Ajouter dans l'historique même si c’est depuis le cache
+                if 'query_history' not in st.session_state:
+                    st.session_state.query_history = []
+
+                st.session_state.query_history.insert(0, {
+                    'question': question,
+                    'sql': cached_sql,
+                    'timestamp': str(st.session_state.get('current_time', 'now'))
+                })
+
+                st.success("✅ Résultat récupéré depuis le cache")
+                return
+
+            # Sinon → génération via LLM
             from infrastructure.database import connect_to_redshift
             from infrastructure.llm import get_sql_db, get_gemini_llm, create_sql_query_chain_only
 
-            # Connexion à Redshift
             engine = connect_to_redshift()
             db = get_sql_db(engine)
-
-            # LLM Gemini Flash
             llm = get_gemini_llm()
 
-            # Génération du SQL
             sql_chain = create_sql_query_chain_only(llm, db)
             result = sql_chain.invoke({"question": question})
 
-            # Nettoyage
             cleaned_sql = result.replace("```sql", "").replace("```", "").strip()
 
             if cleaned_sql:
                 st.session_state.generated_sql = cleaned_sql
+                cache_manager.cache_sql_result(question, cleaned_sql)
 
-                # Historique
+                # ✅ Ajouter dans l'historique même en génération directe
                 if 'query_history' not in st.session_state:
                     st.session_state.query_history = []
 
@@ -119,6 +139,8 @@ def generate_sql_query(question):
 
     except Exception as e:
         st.error(f"{get_text('error_generation')}: {str(e)}")
+
+
 
 
 
