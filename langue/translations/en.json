@@ -26,7 +26,6 @@
     "sql_generated": "📄 Generated Query",
     "results_title": "📊 Results",
     "query_history": "📜 Query History",
-    "footer_message": "Generated with ❤️ for data analysis",
     "powered_by": "Powered by",
     "success_generated": "✅ SQL generated successfully!",
     "error_generation": "❌ Generation error",

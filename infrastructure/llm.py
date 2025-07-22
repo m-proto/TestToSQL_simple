@@ -14,9 +14,7 @@ def get_gemini_llm() -> BaseChatModel:
     Initialise et retourne un modèle Gemini avec API Key.
     """
     return ChatGoogleGenerativeAI(
-        model="gemini-2.5-flash",
-        temperature=0,
-        google_api_key=settings.google_api_key
+        model="gemini-2.5-flash", temperature=0, google_api_key=settings.google_api_key
     )
 
 

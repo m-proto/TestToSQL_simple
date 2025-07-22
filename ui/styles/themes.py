@@ -1,6 +1,7 @@
 """
 Gestion des thèmes et styles personnalisés
 """
+
 import streamlit as st
 
 # Définition des thèmes
@@ -10,27 +11,29 @@ THEMES = {
         "background_color": "#ffffff",
         "secondary_background": "#f0f2f6",
         "text_color": "#262730",
-        "accent_color": "#764ba2"
+        "accent_color": "#764ba2",
     },
     "dark": {
-        "primary_color": "#ff6b6b", 
+        "primary_color": "#ff6b6b",
         "background_color": "#0e1117",
         "secondary_background": "#262730",
         "text_color": "#fafafa",
-        "accent_color": "#4ecdc4"
+        "accent_color": "#4ecdc4",
     },
     "professional": {
         "primary_color": "#2e86ab",
         "background_color": "#f8f9fa",
         "secondary_background": "#e9ecef",
         "text_color": "#212529",
-        "accent_color": "#a23b72"
-    }
+        "accent_color": "#a23b72",
+    },
 }
+
 
 def load_custom_css():
     """Charge les styles CSS personnalisés"""
-    st.markdown("""
+    st.markdown(
+        """
     <style>
     /* Import Google Fonts */
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -285,17 +288,21 @@ def load_custom_css():
         }
     }
     </style>
-    """, unsafe_allow_html=True)
+    """,
+        unsafe_allow_html=True,
+    )
+
 
 def apply_theme(theme_name="light"):
     """Applique un thème spécifique"""
     if theme_name not in THEMES:
         theme_name = "light"
-    
+
     theme = THEMES[theme_name]
-    
+
     # Injection des variables CSS du thème
-    st.markdown(f"""
+    st.markdown(
+        f"""
     <style>
     :root {{
         --primary-color: {theme['primary_color']};
@@ -305,7 +312,10 @@ def apply_theme(theme_name="light"):
         --accent-color: {theme['accent_color']};
     }}
     </style>
-    """, unsafe_allow_html=True)
+    """,
+        unsafe_allow_html=True,
+    )
+
 
 def get_available_themes():
     """Retourne la liste des thèmes disponibles"""

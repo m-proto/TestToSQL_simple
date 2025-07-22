@@ -17,16 +17,17 @@ class DatabaseManager:
         self._connect()
 
     @retry(
-        stop=stop_after_attempt(2),
-        wait=wait_exponential(multiplier=1, min=2, max=5)
+        stop=stop_after_attempt(2), wait=wait_exponential(multiplier=1, min=2, max=5)
     )
     def _connect(self):
         """Établit la connexion Redshift avec pooling et retry"""
         try:
-            logger.info("Connecting to Redshift",
-                        host=settings.redshift_host,
-                        database=settings.redshift_db,
-                        schema=settings.redshift_schema)
+            logger.info(
+                "Connecting to Redshift",
+                host=settings.redshift_host,
+                database=settings.redshift_db,
+                schema=settings.redshift_schema,
+            )
 
             # Création du moteur SQLAlchemy avec configuration robuste
             self.engine = create_engine(
@@ -40,8 +41,8 @@ class DatabaseManager:
                 echo=settings.debug,
                 connect_args={
                     "connect_timeout": 8,
-                    "application_name": "TextToSQL_Streamlit"
-                }
+                    "application_name": "TextToSQL_Streamlit",
+                },
             )
 
             # Test simple de connectivité
@@ -51,14 +52,16 @@ class DatabaseManager:
             # Introspection des tables (log des 5 premières)
             inspector = inspect(self.engine)
             tables = inspector.get_table_names(schema=settings.redshift_schema)
-            logger.info("Database connection successful",
-                        tables_count=len(tables),
-                        tables=tables[:5])
+            logger.info(
+                "Database connection successful",
+                tables_count=len(tables),
+                tables=tables[:5],
+            )
 
         except Exception as e:
-            logger.error("Database connection failed",
-                         error=str(e),
-                         host=settings.redshift_host)
+            logger.error(
+                "Database connection failed", error=str(e), host=settings.redshift_host
+            )
             raise
 
     def health_check(self) -> bool:

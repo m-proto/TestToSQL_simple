@@ -26,7 +26,6 @@
     "sql_generated": "📄 生成されたクエリ",
     "results_title": "📊 結果",
     "query_history": "📜 クエリ履歴",
-    "footer_message": "データ分析のために❤️で作成",
     "powered_by": "技術提供:",
     "success_generated": "✅ SQL生成成功！",
     "error_generation": "❌ 生成エラー",

@@ -1,0 +1,74 @@
+[
+  {
+    "uptime_seconds": 18.172757863998413,
+    "requests_total": 1,
+    "errors_total": 0,
+    "error_rate": 0.0,
+    "avg_response_time": 17.79400396347046,
+    "sql_generations_total": 1,
+    "cache_hits": 0,
+    "cache_misses": 1,
+    "cache_hit_rate": 0.0,
+    "system": {
+      "memory_usage_percent": 56.6,
+      "memory_available_mb": 14074.17578125,
+      "cpu_usage_percent": 0.0
+    },
+    "timestamp": "2025-07-22T16:36:00.298638",
+    "question": "2025年5月の都道府県ごとの掲載台数を集計したい　display_carsにprefecture_name は無いよ"
+  },
+  {
+    "uptime_seconds": 1464.9604051113129,
+    "requests_total": 2,
+    "errors_total": 0,
+    "error_rate": 0.0,
+    "avg_response_time": 24.83968150615692,
+    "sql_generations_total": 2,
+    "cache_hits": 0,
+    "cache_misses": 2,
+    "cache_hit_rate": 0.0,
+    "system": {
+      "memory_usage_percent": 56.6,
+      "memory_available_mb": 14082.671875,
+      "cpu_usage_percent": 0.0
+    },
+    "timestamp": "2025-07-22T17:00:07.085828",
+    "question": "集計日が2025年5月1日、成約条件は「グーネット中古車(PC/携帯)」としたときに、\nclients テーブルに、クライアントごとの成約台数・掲載台数テーブルを結合し、\nクライアントの都道府県ごとに集計したのち、\n掲載台数上位10位までの都道府県のレコードを表示しましょう\nただし集計後に都道府県名が入ってないレコードは表示しないでください"
+  },
+  {
+    "uptime_seconds": 1631.50834774971,
+    "requests_total": 3,
+    "errors_total": 0,
+    "error_rate": 0.0,
+    "avg_response_time": 23.263439496358234,
+    "sql_generations_total": 3,
+    "cache_hits": 0,
+    "cache_misses": 3,
+    "cache_hit_rate": 0.0,
+    "system": {
+      "memory_usage_percent": 55.7,
+      "memory_available_mb": 14368.92578125,
+      "cpu_usage_percent": 0.0
+    },
+    "timestamp": "2025-07-22T17:02:53.636495",
+    "question": "神奈川トヨタ 23年度以降の電話問い合わせについて(No.289)"
+  },
+  {
+    "uptime_seconds": 36.62884998321533,
+    "requests_total": 1,
+    "errors_total": 0,
+    "error_rate": 0.0,
+    "avg_response_time": 36.255632162094116,
+    "sql_generations_total": 1,
+    "cache_hits": 0,
+    "cache_misses": 1,
+    "cache_hit_rate": 0.0,
+    "system": {
+      "memory_usage_percent": 56.6,
+      "memory_available_mb": 14078.109375,
+      "cpu_usage_percent": 0.0
+    },
+    "timestamp": "2025-07-22T17:08:23.152560",
+    "question": "clients テーブルに、クライアントごとの成約台数・掲載台数テーブルを結合し、\nクライアントの都道府県ごとに集計したのち、\n掲載台数上位10位までの都道府県のレコードを表示しましょう\nただし集計後に都道府県名が入ってないレコードは表示しないでください\nまた集計日は2025年5月1日～5月7日、成約条件は「グーネット中古車(PC/携帯)」とする"
+  }
+]

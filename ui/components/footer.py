@@ -1,14 +1,17 @@
 """
 Pied de page de l'application
 """
+
 import streamlit as st
 from langue.translator import get_text
 
+
 def render_footer():
     """Affiche le pied de page"""
-    
+
     # CSS pour le footer
-    st.markdown("""
+    st.markdown(
+        """
     <style>
     .footer {
         margin-top: 3rem;
@@ -36,28 +39,34 @@ def render_footer():
         text-decoration: underline;
     }
     </style>
-    """, unsafe_allow_html=True)
-    
+    """,
+        unsafe_allow_html=True,
+    )
+
     # Contenu du footer
     st.markdown("---")
-    
+
     col1, col2 = st.columns([1, 3])
-    
+
     with col1:
-        st.markdown("**🔄 TextToSQL**")
-        st.caption("v1.0.0")
-    
+        st.markdown("**🔄 v1.0.0 | TextToSQL**")
+
     with col2:
-        st.markdown(f"""
+        st.markdown(
+            f"""
         <div style='text-align: right;'>
-            <p>{get_text('footer_message')}</p>
             <p><small>{get_text('powered_by')} <strong>Streamlit</strong> + <strong>LangChain</strong> + <strong>Google Gemini</strong></small></p>
         </div>
-        """, unsafe_allow_html=True)
-    
+        """,
+            unsafe_allow_html=True,
+        )
+
     # Copyright
-    st.markdown("""
+    st.markdown(
+        """
     <div style='text-align: center; margin-top: 1rem; color: #666;'>
-        <small>© 2025 TextToSQL Project. Tous droits réservés.</small>
+        <small>© Text-to-SQL 2025 – DS Team. [PROTO] MAMADOU.</small>
     </div>
-    """, unsafe_allow_html=True)
+    """,
+        unsafe_allow_html=True,
+    )
