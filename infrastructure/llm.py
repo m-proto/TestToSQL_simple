@@ -1,10 +1,13 @@
 import logging
 from sqlalchemy.engine import Engine
 from langchain.sql_database import SQLDatabase
-from langchain.chains import create_sql_query_chain
+from langchain.chains import create_sql_query_chain, LLMChain
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.language_models.chat_models import BaseChatModel
+from langchain.prompts import PromptTemplate
 from infrastructure.settings import settings
+from infrastructure.prompts import PROMPT_TEMPLATE_EN
+ 
 
 logger = logging.getLogger(__name__)
 
@@ -27,6 +30,17 @@ def get_sql_db(engine: Engine) -> SQLDatabase:
 
 def create_sql_query_chain_only(llm: BaseChatModel, db: SQLDatabase):
     """
-    Crée un SQL Query Chain qui génère du SQL uniquement (sans exécution).
+    Crée un SQL Query Chain qui génère du SQL uniquement (version standard).
     """
     return create_sql_query_chain(llm, db)
+
+
+def create_custom_sql_query_chain(llm: BaseChatModel) -> LLMChain:
+    """
+    Crée une chaîne LLM avec un prompt personnalisé pour générer du SQL.
+    """
+    prompt = PromptTemplate(
+        input_variables=["question"],
+        template=PROMPT_TEMPLATE_EN,
+    )
+    return LLMChain(llm=llm, prompt=prompt)

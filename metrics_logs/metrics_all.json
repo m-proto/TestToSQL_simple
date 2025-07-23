@@ -70,5 +70,275 @@
     },
     "timestamp": "2025-07-22T17:08:23.152560",
     "question": "clients テーブルに、クライアントごとの成約台数・掲載台数テーブルを結合し、\nクライアントの都道府県ごとに集計したのち、\n掲載台数上位10位までの都道府県のレコードを表示しましょう\nただし集計後に都道府県名が入ってないレコードは表示しないでください\nまた集計日は2025年5月1日～5月7日、成約条件は「グーネット中古車(PC/携帯)」とする"
+  },
+  {
+    "uptime_seconds": 53.79086875915527,
+    "requests_total": 1,
+    "errors_total": 0,
+    "error_rate": 0.0,
+    "avg_response_time": 50.21012020111084,
+    "sql_generations_total": 1,
+    "cache_hits": 0,
+    "cache_misses": 1,
+    "cache_hit_rate": 0.0,
+    "system": {
+      "memory_usage_percent": 46.9,
+      "memory_available_mb": 17245.8125,
+      "cpu_usage_percent": 0.0
+    },
+    "timestamp": "2025-07-23T09:37:16.512879",
+    "question": "以下の条件で SQL を生成してください。\n\n【目的】\nclients テーブルに、クライアントごとの「成約台数」と「掲載台数」を結合し、\nクライアントの「都道府県」単位で集計してください。\n\n【条件】\n- 対象期間：2025年5月1日〜5月7日\n- 成約の媒体：『グーネット中古車(PC/携帯)』\n- 集計後、「都道府県名」が NULL または空のレコードは除外する\n- 掲載台数が多い順に並べ、上位10件のみ取得する\n"
+  },
+  {
+    "uptime_seconds": 33.87501072883606,
+    "requests_total": 1,
+    "errors_total": 0,
+    "error_rate": 0.0,
+    "avg_response_time": 32.620723724365234,
+    "sql_generations_total": 1,
+    "cache_hits": 0,
+    "cache_misses": 1,
+    "cache_hit_rate": 0.0,
+    "system": {
+      "memory_usage_percent": 44.8,
+      "memory_available_mb": 17916.91796875,
+      "cpu_usage_percent": 0.0
+    },
+    "timestamp": "2025-07-23T10:03:10.986564",
+    "question": "2025年5月1日〜5月7日までにグーネット中古車（PC/携帯）で成約された台数を、都道府県別に集計してください。"
+  },
+  {
+    "uptime_seconds": 28.435776948928833,
+    "requests_total": 1,
+    "errors_total": 0,
+    "error_rate": 0.0,
+    "avg_response_time": 27.983463048934937,
+    "sql_generations_total": 1,
+    "cache_hits": 0,
+    "cache_misses": 1,
+    "cache_hit_rate": 0.0,
+    "system": {
+      "memory_usage_percent": 45.5,
+      "memory_available_mb": 17695.734375,
+      "cpu_usage_percent": 0.0
+    },
+    "timestamp": "2025-07-23T10:40:40.208016",
+    "question": "2025年5月1日〜5月7日までにグーネット中古車（PC/携帯）で成約された台数を、都道府県別に集計してください。"
+  },
+  {
+    "uptime_seconds": 185.29632687568665,
+    "requests_total": 2,
+    "errors_total": 0,
+    "error_rate": 0.0,
+    "avg_response_time": 28.21834659576416,
+    "sql_generations_total": 2,
+    "cache_hits": 0,
+    "cache_misses": 2,
+    "cache_hit_rate": 0.0,
+    "system": {
+      "memory_usage_percent": 45.8,
+      "memory_available_mb": 17603.9921875,
+      "cpu_usage_percent": 42.9
+    },
+    "timestamp": "2025-07-23T10:43:17.079052",
+    "question": "2025年5月における、ダイハツ・スズキ・スバル・ホンダ・三菱のブランドごとの物件掲載台数と平均価格を計算してください。  \nブランド名・掲載台数・平均価格の3つを出力してください。\n"
+  },
+  {
+    "uptime_seconds": 26.94643473625183,
+    "requests_total": 1,
+    "errors_total": 0,
+    "error_rate": 0.0,
+    "avg_response_time": 26.39423942565918,
+    "sql_generations_total": 1,
+    "cache_hits": 0,
+    "cache_misses": 1,
+    "cache_hit_rate": 0.0,
+    "system": {
+      "memory_usage_percent": 44.8,
+      "memory_available_mb": 17908.77734375,
+      "cpu_usage_percent": 0.0
+    },
+    "timestamp": "2025-07-23T10:46:09.065695",
+    "question": "2025年5月における、ダイハツ・スズキ・スバル・ホンダ・三菱のブランドごとの物件掲載台数と平均価格を計算してください。  \nブランド名・掲載台数・平均価格の3つを出力してください。\n"
+  },
+  {
+    "uptime_seconds": 24.51360249519348,
+    "requests_total": 1,
+    "errors_total": 0,
+    "error_rate": 0.0,
+    "avg_response_time": 24.045223474502563,
+    "sql_generations_total": 1,
+    "cache_hits": 0,
+    "cache_misses": 1,
+    "cache_hit_rate": 0.0,
+    "system": {
+      "memory_usage_percent": 45.1,
+      "memory_available_mb": 17827.14453125,
+      "cpu_usage_percent": 0.0
+    },
+    "timestamp": "2025-07-23T10:50:36.049132",
+    "question": "2025年5月における、ブランドごとの物件の掲載台数と平均価格を計算しましょう。\nブランド名・掲載台数・平均価格の3つを出力してください。\nただし、以下のブランドに限定してください：\nダイハツ・スズキ・スバル・ホンダ・三菱\n\n"
+  },
+  {
+    "uptime_seconds": 24.282655715942383,
+    "requests_total": 1,
+    "errors_total": 0,
+    "error_rate": 0.0,
+    "avg_response_time": 23.87526273727417,
+    "sql_generations_total": 1,
+    "cache_hits": 0,
+    "cache_misses": 1,
+    "cache_hit_rate": 0.0,
+    "system": {
+      "memory_usage_percent": 45.6,
+      "memory_available_mb": 17655.28125,
+      "cpu_usage_percent": 0.0
+    },
+    "timestamp": "2025-07-23T10:59:03.820244",
+    "question": "2025年5月における、ブランドごとの物件の掲載台数と平均価格を計算しましょう。\nブランド名・掲載台数・平均価格の3つを出力してください。\nただし、以下のブランドに限定してください：\nダイハツ・スズキ・スバル・ホンダ・三菱\n\n"
+  },
+  {
+    "uptime_seconds": 22.99510407447815,
+    "requests_total": 1,
+    "errors_total": 0,
+    "error_rate": 0.0,
+    "avg_response_time": 22.541614055633545,
+    "sql_generations_total": 1,
+    "cache_hits": 0,
+    "cache_misses": 1,
+    "cache_hit_rate": 0.0,
+    "system": {
+      "memory_usage_percent": 45.3,
+      "memory_available_mb": 17739.7265625,
+      "cpu_usage_percent": 0.0
+    },
+    "timestamp": "2025-07-23T11:01:25.162321",
+    "question": "2025年5月における、ブランドごとの物件の掲載台数と平均価格を計算しましょう。\nブランド名・掲載台数・平均価格の3つを出力してください。\nただし、以下のブランドに限定してください：\nダイハツ・スズキ・スバル・ホンダ・三菱\n\n"
+  },
+  {
+    "uptime_seconds": 196.74026155471802,
+    "requests_total": 2,
+    "errors_total": 0,
+    "error_rate": 0.0,
+    "avg_response_time": 23.77932643890381,
+    "sql_generations_total": 2,
+    "cache_hits": 0,
+    "cache_misses": 2,
+    "cache_hit_rate": 0.0,
+    "system": {
+      "memory_usage_percent": 45.9,
+      "memory_available_mb": 17565.98828125,
+      "cpu_usage_percent": 0.0
+    },
+    "timestamp": "2025-07-23T11:04:18.907165",
+    "question": " \n \t\nclients テーブルに、クライアントごとの成約台数・掲載台数テーブルを結合し、\nクライアントの都道府県ごとに集計したのち、\n掲載台数上位10位までの都道府県のレコードを表示しましょう\nただし集計後に都道府県名が入ってないレコードは表示しないでください\nまた集計日は2025年5月1日～5月7日、成約条件は「グーネット中古車(PC/携帯)」とする\n"
+  },
+  {
+    "uptime_seconds": 21.431356191635132,
+    "requests_total": 1,
+    "errors_total": 0,
+    "error_rate": 0.0,
+    "avg_response_time": 20.697329998016357,
+    "sql_generations_total": 1,
+    "cache_hits": 0,
+    "cache_misses": 1,
+    "cache_hit_rate": 0.0,
+    "system": {
+      "memory_usage_percent": 45.0,
+      "memory_available_mb": 17838.15625,
+      "cpu_usage_percent": 0.0
+    },
+    "timestamp": "2025-07-23T11:11:11.798230",
+    "question": "2025年5月における、ダイハツ・スズキ・スバル・ホンダ・三菱のブランドごとの物件掲載台数と平均価格を計算してください。\nブランド名・掲載台数・平均価格の3つを出力してください\n"
+  },
+  {
+    "uptime_seconds": 157.64250588417053,
+    "requests_total": 2,
+    "errors_total": 0,
+    "error_rate": 0.0,
+    "avg_response_time": 29.13940465450287,
+    "sql_generations_total": 2,
+    "cache_hits": 0,
+    "cache_misses": 2,
+    "cache_hit_rate": 0.0,
+    "system": {
+      "memory_usage_percent": 45.7,
+      "memory_available_mb": 17612.91796875,
+      "cpu_usage_percent": 0.0
+    },
+    "timestamp": "2025-07-23T11:13:28.013411",
+    "question": "以下の条件で SQL を生成してください。\n\n【目的】 clients テーブルに、クライアントごとの「成約台数」と「掲載台数」を結合し、 クライアントの「都道府県」単位で集計してください。\n\n【条件】\n\n対象期間：2025年5月1日〜5月7日\n成約の媒体：『グーネット中古車(PC/携帯)』\n集計後、「都道府県名」が NULL または空のレコードは除外する\n掲載台数が多い順に並べ、上位10件のみ取得する\n"
+  },
+  {
+    "uptime_seconds": 59.45547795295715,
+    "requests_total": 1,
+    "errors_total": 0,
+    "error_rate": 0.0,
+    "avg_response_time": 58.84912180900574,
+    "sql_generations_total": 1,
+    "cache_hits": 0,
+    "cache_misses": 1,
+    "cache_hit_rate": 0.0,
+    "system": {
+      "memory_usage_percent": 46.3,
+      "memory_available_mb": 17429.44140625,
+      "cpu_usage_percent": 0.0
+    },
+    "timestamp": "2025-07-23T11:16:27.455132",
+    "question": "以下の条件で SQL を生成してください。\n\n【目的】 clients テーブルに、クライアントごとの「成約台数」と「掲載台数」を結合し、 クライアントの「都道府県」単位で集計してください。\n\n【条件】\n\n対象期間：2025年5月1日〜5月7日\n成約の媒体：『グーネット中古車(PC/携帯)』\n集計後、「都道府県名」が NULL または空のレコードは除外する\n掲載台数が多い順に並べ、上位10件のみ取得する\n"
+  },
+  {
+    "uptime_seconds": 521.3388228416443,
+    "requests_total": 2,
+    "errors_total": 0,
+    "error_rate": 0.0,
+    "avg_response_time": 29.42456090450287,
+    "sql_generations_total": 1,
+    "cache_hits": 1,
+    "cache_misses": 1,
+    "cache_hit_rate": 0.5,
+    "system": {
+      "memory_usage_percent": 47.9,
+      "memory_available_mb": 16894.078125,
+      "cpu_usage_percent": 0.0
+    },
+    "timestamp": "2025-07-23T11:24:09.339888",
+    "question": "以下の条件で SQL を生成してください。\n\n【目的】 clients テーブルに、クライアントごとの「成約台数」と「掲載台数」を結合し、 クライアントの「都道府県」単位で集計してください。\n\n【条件】\n\n対象期間：2025年5月1日〜5月7日\n成約の媒体：『グーネット中古車(PC/携帯)』\n集計後、「都道府県名」が NULL または空のレコードは除外する\n掲載台数が多い順に並べ、上位10件のみ取得する\n"
+  },
+  {
+    "uptime_seconds": 53.79918718338013,
+    "requests_total": 1,
+    "errors_total": 0,
+    "error_rate": 0.0,
+    "avg_response_time": 27.588804960250854,
+    "sql_generations_total": 1,
+    "cache_hits": 0,
+    "cache_misses": 1,
+    "cache_hit_rate": 0.0,
+    "system": {
+      "memory_usage_percent": 47.9,
+      "memory_available_mb": 16907.1328125,
+      "cpu_usage_percent": 0.0
+    },
+    "timestamp": "2025-07-23T11:25:51.873490",
+    "question": " \n \t\nclients テーブルに、クライアントごとの成約台数・掲載台数テーブルを結合し、\nクライアントの都道府県ごとに集計したのち、\n掲載台数上位10位までの都道府県のレコードを表示しましょう\nただし集計後に都道府県名が入ってないレコードは表示しないでください\nまた集計日は2025年5月1日～5月7日、成約条件は「グーネット中古車(PC/携帯)」とする"
+  },
+  {
+    "uptime_seconds": 26.186960458755493,
+    "requests_total": 1,
+    "errors_total": 0,
+    "error_rate": 0.0,
+    "avg_response_time": 25.824568510055542,
+    "sql_generations_total": 1,
+    "cache_hits": 0,
+    "cache_misses": 1,
+    "cache_hit_rate": 0.0,
+    "system": {
+      "memory_usage_percent": 46.7,
+      "memory_available_mb": 17286.36328125,
+      "cpu_usage_percent": 0.0
+    },
+    "timestamp": "2025-07-23T11:28:18.668680",
+    "question": " \n \t\nclients テーブルに、クライアントごとの成約台数・掲載台数テーブルを結合し、\nクライアントの都道府県ごとに集計したのち、\n掲載台数上位10位までの都道府県のレコードを表示しましょう\nただし集計後に都道府県名が入ってないレコードは表示しないでください\nまた集計日は2025年5月1日～5月7日、成約条件は「グーネット中古車(PC/携帯)」とする"
   }
 ]

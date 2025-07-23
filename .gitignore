@@ -66,6 +66,7 @@ security-report.json
 credentials.json
 secrets.json
 config.json
+metrics_logs/metrics_all.json
 
 # VS Code
 .vscode/
