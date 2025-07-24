@@ -1,6 +1,6 @@
 {
     "app_title": "TextToSQL ジェネレーター",
-    "app_subtitle": "質問をRedshift用SQLクエリに変換",
+    "app_subtitle": "🧠質問を書くとSQL完成！自然言語から一発生成",
     "select_language": "🌍 言語",
     "database_config": "📊 データベース設定",
     "llm_settings": "🤖 LLM設定",
@@ -60,5 +60,9 @@
   "secure_connection": "🔒 セキュア接続アクティブ",
   "config_details_available": "⚙️ 詳細設定は設定タブで利用可能",
   "status_active": "✅ OK",
-  "success_cache": "✅ キャッシュから取得されました"
+  "success_cache": "✅ キャッシュから取得されました",
+   "example_brand_count": "ブランド別台数・平均価格",
+  "example_prefecture_sales": "都道府県別成約・掲載台数",
+  "example_city_label": "市区町村ラベル別クライアント数",
+  "copy_sql_hint": "👉 SQLをコピーするには、コード右側のコピーアイコンをクリックしてください。"
 }

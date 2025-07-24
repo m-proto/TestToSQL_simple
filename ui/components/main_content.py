@@ -3,7 +3,6 @@ import streamlit as st
 
 from langue.translator import get_text
 from infrastructure.cache import cache_manager
-from infrastructure.monitoring import metrics, export_metrics_to_file
 from infrastructure.database import connect_to_redshift
 from infrastructure.llm import get_sql_db, get_gemini_llm, create_sql_query_chain_only
 
@@ -26,6 +25,10 @@ def render_main_content():
         render_advanced_settings()
 
 
+def set_example_question(q):
+    st.session_state["question_input"] = q
+
+
 def render_sql_generator():
     """Interface principale de génération SQL"""
 
@@ -43,24 +46,22 @@ def render_sql_generator():
     with col2:
         st.markdown(f"### {get_text('examples_title')}")
 
-        # Boutons d'exemples
-        if st.button("📊 " + get_text("example_sales"), use_container_width=True):
-            st.session_state.question_input = (
-                "Combien de voitures ont été vendues au total ?"
-            )
-            st.rerun()
-
-        if st.button("📅 " + get_text("example_monthly"), use_container_width=True):
-            st.session_state.question_input = (
-                "Montrez-moi les ventes par mois cette année"
-            )
-            st.rerun()
-
-        if st.button("🏆 " + get_text("example_brands"), use_container_width=True):
-            st.session_state.question_input = (
-                "Quelles sont les 10 marques les plus vendues ?"
-            )
-            st.rerun()
+        st.button(
+            get_text("example_prefecture_sales"),
+            use_container_width=True,
+            on_click=set_example_question,
+            args=(
+                "2025年5月1日から5月7日までの都道府県別の成約台数と掲載台数を集計して。",
+            ),
+        )
+        st.button(
+            get_text("example_city_label"),
+            use_container_width=True,
+            on_click=set_example_question,
+            args=(
+                "2025年5月1日時点で北海道の市区町村ごとのクライアント数をラベル（市・区・町・村・不明）別に集計して。",
+            ),
+        )
 
     # Boutons d'action
     col1, col2, col3 = st.columns([2, 1, 1])
@@ -75,9 +76,16 @@ def render_sql_generator():
 
     with col2:
         if st.button(get_text("clear_button"), use_container_width=True):
+            # Supprimer proprement la question AVANT toute instanciation du widget
+            if "question_input" in st.session_state:
+                del st.session_state["question_input"]
             st.session_state.question_input = ""
+
+            # Supprimer aussi le SQL généré si présent
             if "generated_sql" in st.session_state:
-                del st.session_state.generated_sql
+                del st.session_state["generated_sql"]
+
+            # Recharger l’interface proprement
             st.rerun()
 
     # Génération SQL
@@ -93,8 +101,6 @@ def generate_sql_query(question):
     """Génère la requête SQL sans exécution via LangChain SQL Chain + cache"""
     try:
         with st.spinner(get_text("generating")):
-            start_time = time.time()
-
             cached_sql = cache_manager.get_cached_sql_result(question)
 
             if cached_sql:
@@ -114,15 +120,6 @@ def generate_sql_query(question):
                 )
 
                 st.success(get_text("success_cache"))
-
-                # ✅ MISE À JOUR METRICS
-                metrics.record_cache_hit()
-                metrics.record_request(
-                    response_time=time.time() - start_time, success=True
-                )
-
-                export_metrics_to_file(question)
-                print("✅ Metrics exportée depuis le cache")
                 return
 
             engine = connect_to_redshift()
@@ -134,7 +131,7 @@ def generate_sql_query(question):
             cleaned_sql = (
                 result.replace("```sql", "")
                 .replace("```", "")
-                .replace("SQLQuery:", "")  # ⬅️ Supprime le préfixe si présent
+                .replace("SQLQuery:", "")
                 .strip()
             )
 
@@ -156,24 +153,11 @@ def generate_sql_query(question):
 
                 st.success(get_text("success_generated"))
 
-                # ✅ MISE À JOUR METRICS
-                metrics.record_cache_miss()
-                metrics.record_sql_generation()
-                metrics.record_request(
-                    response_time=time.time() - start_time, success=True
-                )
-
             else:
                 st.error(get_text("error_generation"))
-                metrics.record_request(
-                    response_time=time.time() - start_time, success=False
-                )
 
     except Exception as e:
         st.error(f"{get_text('error_generation')}: {str(e)}")
-        metrics.record_request(response_time=0.0, success=False)
-
-    export_metrics_to_file(question)
 
 
 def render_sql_result(sql):
@@ -182,6 +166,7 @@ def render_sql_result(sql):
 
     # Affichage du SQL avec coloration syntaxique
     st.code(sql, language="sql")
+    st.caption(get_text("copy_sql_hint"))
 
     # Boutons d'action sur le résultat
     col1, col2, col3 = st.columns(3)
@@ -196,10 +181,7 @@ def render_sql_result(sql):
         ):
             st.success("📥 SQL téléchargé !")
 
-    with col2:
-        if st.button(get_text("copy_button"), use_container_width=True):
-            # Note: La copie dans le presse-papier nécessite JavaScript
-            st.info(get_text("copied"))
+    # Suppression du bouton Copier (inutile car st.code a déjà la fonction)
 
     with col3:
         if st.button(get_text("execute_button"), use_container_width=True):
@@ -284,6 +266,7 @@ def render_advanced_settings():
         if st.button(get_text("clear_history"), use_container_width=True):
             st.session_state.query_history = []
             st.success(get_text("history_cleared"))
+            st.rerun()
 
     with col2:
         if st.button(get_text("reset_params"), use_container_width=True):

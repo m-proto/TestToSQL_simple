@@ -1,6 +1,6 @@
 {
     "app_title": "Générateur TextToSQL",
-    "app_subtitle": "Convertissez vos questions en requêtes SQL pour Redshift",
+    "app_subtitle": "🧠Posez votre question, la requête SQL est prête !",
     "select_language": "🌍 Langue",
     "database_config": "📊 Configuration Base",
     "llm_settings": "🤖 Paramètres LLM",
@@ -60,5 +60,9 @@
   "secure_connection": "🔒 Connexion sécurisée active",
   "config_details_available": "⚙️ Configuration détaillée disponible dans l'onglet Paramètres",
   "status_active": "✅ OK",
-  "success_cache": "✅ Résultat récupéré depuis le cache"
+  "success_cache": "✅ Résultat récupéré depuis le cache",
+  "example_brand_count": "Volume & prix moyen par marque",
+  "example_prefecture_sales": "Ventes et stocks par préfecture",
+  "example_city_label": "Clients par type de ville",
+  "copy_sql_hint": "👉 Pour copier le SQL, cliquez sur l'icône de copie à droite du code."
 }

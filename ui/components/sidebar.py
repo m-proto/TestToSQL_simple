@@ -63,14 +63,16 @@ def render_connection_status():
     """Affiche le statut des connexions"""
     st.subheader(get_text("database_config"))
 
-    # Status Database - Format vertical pour noms complets
-    st.metric(label=get_text("database"), value="🟢", delta=get_text("connected"))
-    st.caption("Redshift")
+    col1, col2 = st.columns(2)
 
-    st.metric(label=get_text("schema"), value="📋")
-    st.caption("usedcar_dwh")
+    with col1:
+        st.metric(label=get_text("database"), value="🟢")
+        st.caption("Redshift")
 
-    # Status simplifié
+    with col2:
+        st.metric(label=get_text("schema"), value="📋")
+        st.caption("usedcar_dwh")
+
     st.caption(get_text("secure_connection"))
 
 

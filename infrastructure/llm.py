@@ -7,7 +7,7 @@ from langchain_core.language_models.chat_models import BaseChatModel
 from langchain.prompts import PromptTemplate
 from infrastructure.settings import settings
 from infrastructure.prompts import PROMPT_TEMPLATE_EN
- 
+
 
 logger = logging.getLogger(__name__)
 
