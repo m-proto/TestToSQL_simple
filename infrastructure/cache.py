@@ -1,6 +1,7 @@
 """
 Cache manager pour optimiser les performances (Version mémoire gratuite)
 """
+
 import hashlib
 import time
 from typing import Optional, Any, Dict

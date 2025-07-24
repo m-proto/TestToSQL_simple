@@ -1,4 +1,3 @@
-import time
 import streamlit as st
 
 from langue.translator import get_text
