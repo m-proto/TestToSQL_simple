@@ -9,6 +9,7 @@ psycopg2-binary
 
 # Streamlit interface
 streamlit
+setuptools
 
 # Data handling
 pydantic
