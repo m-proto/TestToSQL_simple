@@ -3,23 +3,24 @@
 import pytest
 from unittest.mock import Mock, patch, MagicMock
 
+
 @pytest.fixture(autouse=True)
 def mock_streamlit():
     """Configuration globale de Streamlit pour les tests"""
     # Mock des colonnes
     mock_col = MagicMock()
     mock_columns = Mock(return_value=[mock_col, mock_col])
-    
+
     # Mock du context manager sidebar
     mock_sidebar = MagicMock()
     mock_sidebar.__enter__ = Mock()
     mock_sidebar.__exit__ = Mock()
-    
+
     # Mock du context manager spinner
     mock_spinner = MagicMock()
     mock_spinner.__enter__ = Mock()
     mock_spinner.__exit__ = Mock()
-    
+
     # Configuration de base de session_state
     session_state = {
         "language": "fr",
@@ -32,10 +33,10 @@ def mock_streamlit():
             "select_language": "Sélectionner la langue",
             "database_config": "Configuration BDD",
             "llm_settings": "Paramètres LLM",
-            "system_title": "Informations système"
-        }
+            "system_title": "Informations système",
+        },
     }
-    
+
     # Patch multiple des fonctions Streamlit
     with patch.multiple(
         "streamlit",
@@ -50,6 +51,6 @@ def mock_streamlit():
         selectbox=Mock(),
         metric=Mock(),
         caption=Mock(),
-        button=Mock()
+        button=Mock(),
     ):
-        yield 
+        yield
