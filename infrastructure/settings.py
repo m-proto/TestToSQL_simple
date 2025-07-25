@@ -8,15 +8,15 @@ from dotenv import load_dotenv
 # 1. Charger .env localement
 load_dotenv()
 
-# 2. Fallback sécurisé pour Streamlit Cloud
+# 2. Injecter st.secrets dans os.environ AVANT d'instancier Settings
 try:
     for key, value in st.secrets.items():
-        os.environ[key.upper()] = str(value)
+        if key.upper() not in os.environ:  # ne pas écraser .env
+            os.environ[key.upper()] = str(value)
 except Exception:
     pass
 
 
-# 3. Config Pydantic
 class Settings(BaseSettings):
     redshift_user: str
     redshift_password: str
@@ -73,5 +73,5 @@ class Settings(BaseSettings):
     }
 
 
-# 4. Instance globale
+# ✅ 3. Création finale de l’instance
 settings = Settings()
