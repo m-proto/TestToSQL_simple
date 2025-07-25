@@ -12,6 +12,7 @@ build/
 .env.local
 .env.staging
 .env.production
+.streamlit/secrets.toml
 
 # Logs
 *.log
