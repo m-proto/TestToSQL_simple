@@ -64,5 +64,6 @@
    "example_brand_count": "ブランド別台数・平均価格",
   "example_prefecture_sales": "都道府県別成約・掲載台数",
   "example_city_label": "市区町村ラベル別クライアント数",
-  "copy_sql_hint": "👉 SQLをコピーするには、コード右側のコピーアイコンをクリックしてください。"
+  "copy_sql_hint": "👉 SQLをコピーするには、コード右側のコピーアイコンをクリックしてください。",
+  "execute_button_info": "⚡ 実行機能は近日公開予定です..."
 }

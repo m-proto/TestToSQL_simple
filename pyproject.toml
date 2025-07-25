@@ -1,0 +1,48 @@
+[project]
+name = "testtosql"
+version = "1.0.0"
+description = "A Streamlit application to convert natural language to SQL queries"
+readme = "README.md"
+requires-python = ">=3.9"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --tb=short --cov=infrastructure --cov-report=term-missing"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::UserWarning",
+    "ignore::streamlit.errors.StreamlitAPIWarning"
+]
+
+[build-system]
+requires = ["setuptools>=42.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.poetry]
+name = "testtosql-simple"
+version = "0.1.0"
+description = "A simple Text to SQL converter using LLMs"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pytest = "^7.0"
+pytest-mock = "^3.10"
+pytest-cov = "^4.1"
+
+[tool.coverage.run]
+source = ["infrastructure"]
+omit = ["tests/*", "**/__init__.py", "ui/*", "style.py", "footer.py", "sidebar.py"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if __name__ == .__main__.:",
+    "pass",
+    "raise NotImplementedError",
+    "raise ImportError",
+    "except ImportError:"
+]
+show_missing = true
+fail_under = 80

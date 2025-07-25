@@ -88,3 +88,6 @@ db_manager = DatabaseManager()
 def connect_to_redshift() -> Engine:
     """Expose le moteur SQLAlchemy Redshift (utilisé par LLMManagerSQLChain)"""
     return db_manager.engine
+
+
+

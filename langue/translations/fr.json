@@ -64,5 +64,6 @@
   "example_brand_count": "Volume & prix moyen par marque",
   "example_prefecture_sales": "Ventes et stocks par préfecture",
   "example_city_label": "Clients par type de ville",
-  "copy_sql_hint": "👉 Pour copier le SQL, cliquez sur l'icône de copie à droite du code."
+  "copy_sql_hint": "👉 Pour copier le SQL, cliquez sur l'icône de copie à droite du code.",
+  "execute_button_info": "⚡ Fonctionnalité d'exécution à venir..."
 }

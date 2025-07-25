@@ -184,7 +184,7 @@ def render_sql_result(sql):
 
     with col3:
         if st.button(get_text("execute_button"), use_container_width=True):
-            st.info("⚡ Fonctionnalité d'exécution à venir...")
+            st.info(get_text("execute_button_info"))
 
 
 def render_query_history():

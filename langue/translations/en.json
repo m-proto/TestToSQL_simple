@@ -64,5 +64,6 @@
   "example_brand_count": "Brand count & average price",
   "example_prefecture_sales": "Prefecture sales & display count",
   "example_city_label": "Clients by city label",
-  "copy_sql_hint": "👉 To copy the SQL, click the copy icon on the right of the code block."
+  "copy_sql_hint": "👉 To copy the SQL, click the copy icon on the right of the code block.",
+  "execute_button_info": "⚡ Execution feature coming soon..."
 }

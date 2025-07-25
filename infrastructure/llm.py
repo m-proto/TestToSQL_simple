@@ -1,6 +1,8 @@
 import logging
 from sqlalchemy.engine import Engine
-from langchain.sql_database import SQLDatabase
+#from langchain.sql_database import SQLDatabase
+from langchain_community.utilities import SQLDatabase
+
 from langchain.chains import create_sql_query_chain, LLMChain
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.language_models.chat_models import BaseChatModel
